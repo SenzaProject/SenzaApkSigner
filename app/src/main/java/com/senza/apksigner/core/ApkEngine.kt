@@ -86,7 +86,7 @@ object ZipAligner {
                     val ne = ZipArchiveEntry(e)
                     ne.setExtraFields(arrayOf<ZipExtraField>())
                     if (e.method == java.util.zip.ZipEntry.STORED && !e.isDirectory) {
-                        ne.alignment = if (page16k && e.name.endsWith(".so")) 16384 else 4
+                        ne.setAlignment(if (page16k && e.name.endsWith(".so")) 16384 else 4)
                     }
                     out.addRawArchiveEntry(ne, zf.getRawInputStream(e))
                 }
